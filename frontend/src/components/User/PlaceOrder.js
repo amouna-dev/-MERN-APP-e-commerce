@@ -5,7 +5,6 @@ import { createOrder } from '../../JS/actions/orderActions';
 import CheckoutSteps from './CheckoutSteps';
 import '../../App.css'
 import { Col, Container, Row, Spinner, Alert, Card } from 'react-bootstrap';
-import { CART_EMPTY } from '../../JS/constants/cart';
 import { ORDER_CREATE_RESET } from '../../JS/constants/order';
 
 
@@ -28,6 +27,7 @@ const PlaceOrder = ({history}) => {
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
     
     const dispatch = useDispatch();
+
     const placeOrderHandler = () => {
         // replace cartItems with orderItems
       dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
@@ -37,7 +37,6 @@ const PlaceOrder = ({history}) => {
      
       if (success) {
         history.push(`/order/${order._id}`);
-        dispatch({type: CART_EMPTY});
         dispatch({type: ORDER_CREATE_RESET})
       }
     }, [dispatch, order, history, success]);
