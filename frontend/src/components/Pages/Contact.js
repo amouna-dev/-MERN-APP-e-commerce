@@ -5,9 +5,7 @@ import '../../App.css'
 
 const Contact = () => {
 
-    const handleSendMail = () => {
-        alert("Message send with success")
-    }
+   
     return (
         <div>
             <Container>
@@ -39,7 +37,7 @@ const Contact = () => {
                 </div>
                 </Col>
                 <Col>
-                <Form onSubmit={handleSendMail}>
+                <Form>
                 <h2 class="title">Send your comments</h2>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlEmail">
                         <Form.Label>Email address</Form.Label>
@@ -49,7 +47,9 @@ const Contact = () => {
                         <Form.Label>Message</Form.Label>
                         <Form.Control as="textarea" rows={3} placeholder="Enter your Comment" required/>
                     </Form.Group>
-                    <Button type="submit" variant="dark">Send Email</Button>
+                    <Link to="/">
+                    <Button type="submit" variant="dark" >Send Email</Button>
+                    </Link>
                 </Form>
                 </Col>
                 </Row>
