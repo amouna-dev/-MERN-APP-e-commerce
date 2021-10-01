@@ -27,10 +27,17 @@ app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/order', orderRouter)
 
+if(process.env.NODE_ENV === "production") {
+    //set static folder
+    //All the js and css files will be read and served from this folder
+    app.use(express.static("frontend/build"))
 
-app.get('/api/config/paypal', (req, res) => {
-    res.send(process.env.PAYPAL_CLIENT_ID || 'sb')
-})
+    //index.html for all page routes
+    app.get('*', (req, res) =>{
+        res.sendFile(path.resolve(__dirname, "build", "index.html"))
+    })
+}
+
 app.listen(port, (err) => {
     err?
     console.error(err)
