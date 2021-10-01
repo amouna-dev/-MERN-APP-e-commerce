@@ -6,6 +6,7 @@ import CheckoutSteps from './CheckoutSteps';
 import '../../App.css'
 import { Col, Container, Row, Spinner, Alert, Card } from 'react-bootstrap';
 import { CART_EMPTY } from '../../JS/constants/cart';
+import { ORDER_CREATE_RESET } from '../../JS/constants/order';
 
 
 const PlaceOrder = ({history}) => {
@@ -37,6 +38,7 @@ const PlaceOrder = ({history}) => {
       if (success) {
         history.push(`/order/${order._id}`);
         dispatch({type: CART_EMPTY});
+        dispatch({type: ORDER_CREATE_RESET})
       }
     }, [dispatch, order, history, success]);
 
