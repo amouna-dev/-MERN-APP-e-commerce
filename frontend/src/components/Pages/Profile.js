@@ -1,9 +1,9 @@
 import React from 'react';
-import {  Row, Col, ListGroup, Card, Button } from 'react-bootstrap';
+import {  Row, Col, ListGroup, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../JS/actions/userActions';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 const Profile = ({history}) => {
     const dispatch = useDispatch();
@@ -65,13 +65,6 @@ const Profile = ({history}) => {
         </Card>
       </Col>
       </Row>
-        <Row style={{margin: 15}}>
-            <Link to={`/edit/${user._id}`}> 
-                <Button variant="success" onClick={() => dispatch(getUser(user._id))}>
-                    Edit Profile</Button> 
-               </Link>
-        </Row>
-    
     </>
     );
 };
