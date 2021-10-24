@@ -27,6 +27,7 @@ app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/order', orderRouter)
 
+//deploy
 if(process.env.NODE_ENV === "production") {
     //set static folder
     //All the js and css files will be read and served from this folder

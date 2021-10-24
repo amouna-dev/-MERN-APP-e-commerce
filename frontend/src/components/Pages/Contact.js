@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import emailjs from 'emailjs-com'
 import { Col, Container, Row, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 
 const Contact = () => {
+    const form = useRef();
+    const [done, setDone] = useState(false)
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(
+            'service_5iod4nc', 
+            'template_58jpxwn', 
+            form.current, 
+            'user_idRMOstNMmgCdgme2TACF'
+            )
+      .then((result) => {
+          console.log(result.text);
+          setDone(true)
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
    
     return (
         <div>
             <Container>
-                <h3 style={{color: "#e53637", textAlign: "center", margin: "40px 0px"}}>Contact Us</h3>
+                <h2 style={{color: "#e53637", textAlign: "center", fontWeight: "bold", margin: "40px 0px"}}>Contact Us</h2>
                 <Row>
                 <Col>
                 <div className="contact-text">
@@ -31,25 +50,33 @@ const Contact = () => {
                 </li> 
                 <li>
                 <i className="fa fa-envelope"></i>
-                <span><Link to="#">admin.bestshop@gmail.com</Link></span>
+                <span><Link to="#">amenidevtest@gmail.com</Link></span>
                 </li> 
                 </ul>
                 </div>
                 </Col>
                 <Col>
-                <Form>
-                <h2 class="title">Send your comments</h2>
+                <Form ref={form} onSubmit={handleSubmit}>
+                <h3 class="title">Send your comments</h3>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlName">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" placeholder="your name" required name="user_name" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlSubject">
+                        <Form.Label>Subject</Form.Label>
+                        <Form.Control type="text" placeholder="Subject" required name="user_subject" />
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="name@example.com" required />
+                        <Form.Control type="email" placeholder="name@example.com" required name="user_email" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlMessage">
                         <Form.Label>Message</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder="Enter your Comment" required/>
+                        <Form.Control as="textarea" rows={5} placeholder="Enter your Comment"  name="message" required/>
                     </Form.Group>
-                    <Link to="/">
+                    
                     <Button type="submit" variant="dark" >Send Email</Button>
-                    </Link>
+                    {done?  <h5 style={{color: "green"}}>Thank you... </h5> : ""}
                 </Form>
                 </Col>
                 </Row>

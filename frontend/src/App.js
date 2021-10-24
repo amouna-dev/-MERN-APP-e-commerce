@@ -25,6 +25,7 @@ import './App.css';
 import Footer from './components/Footer/Footer';
 import ProductList from './components/Pages/ProductList';
 import Contact from './components/Pages/Contact';
+import EditProfile from './components/Pages/EditProfile';
 
 function App() {
   const dispatch = useDispatch()
@@ -52,6 +53,7 @@ function App() {
         <Route exact path="/contact" component={Contact} />
             {/* User && Admin */}
         <Route exact path="/profile/:id" component= {Profile} />
+        <Route exact path="/profile/edit/:id" component= {EditProfile} />
         <Route exact path="/order/:id" component={Order} />
             {/* User */}
         <PrivateRoute exact path="/dashbord" component={Dashbord} />

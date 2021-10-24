@@ -28,18 +28,20 @@ const PlaceOrder = ({history}) => {
     
     const dispatch = useDispatch();
 
+    useEffect(() => {
+     
+      if (success) {
+        history.push(`/order/${order._id}`)
+       // dispatch({type: ORDER_CREATE_RESET})
+      }
+    }, [dispatch, order, history, success])
+
     const placeOrderHandler = () => {
         // replace cartItems with orderItems
       dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
       
-    };
-    useEffect(() => {
-     
-      if (success) {
-        history.push(`/order/${order._id}`);
-       // dispatch({type: ORDER_CREATE_RESET})
-      }
-    }, [dispatch, order, history, success]);
+    }
+   
 
     return (
         <div>

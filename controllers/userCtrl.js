@@ -1,5 +1,5 @@
 const User = require("../models/user")
-
+const bcrypt = require('bcrypt')
 
 //get all users
 const getUsers = async(req, res) => {
@@ -37,6 +37,9 @@ const getUserById = async(req, res) => {
 
 //put user
 const updateUser = async(req, res) => {
+    if (req.body.password){
+        req.body.password  = await bcrypt.hash(req.body.password, 10);
+      }
     try {
         const user = await User.findByIdAndUpdate({_id: req.params.id},{$set: {...req.body}})
         if(user) {

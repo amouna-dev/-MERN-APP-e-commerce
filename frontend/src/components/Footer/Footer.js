@@ -71,7 +71,7 @@ const Footer = () => {
                     <div className="footer-widget">
                         <h6>NewsLetter</h6>
                         <div className="footer-newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <p>Be the first to know about new arrivals, look catalogs, sales & promos!</p>
                             <form action="#">
                                 <input type="text" placeholder="Your Email" />
                                 <button type="submit"><span><i className="fa fa-envelope"

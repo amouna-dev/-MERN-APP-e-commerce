@@ -14,9 +14,9 @@ const UserList = () => {
         //eslint-disable-next-line
     },[])
     return (
-        <div>
-            <h2> Liste of Users </h2>
-           { userLoding? (
+        <div style={{marginLeft: "30px"}}>
+            <h2> List of Users </h2>
+            { userLoding? (
                <Spinner animation="border" role="status">
                <span className="visually-hidden">Loading...</span>
            </Spinner>
