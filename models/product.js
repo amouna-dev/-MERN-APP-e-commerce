@@ -9,7 +9,9 @@ const productSchema = new Schema({
     },
     imageProd: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        maxlength: 60
     },
     brand : {
         type:String, 
@@ -48,5 +50,6 @@ const productSchema = new Schema({
         default: Date.now,
     }
 })
-
+//index for search
+productSchema.index({ nameProd: 'text' });
 module.exports = model('product', productSchema)

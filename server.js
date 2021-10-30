@@ -7,7 +7,7 @@ const authRouter = require('./Routes/Auth')
 const userRouter = require('./Routes/user')
 const productRouter = require('./Routes/product')
 const orderRouter = require('./Routes/order')
-
+const filterRouter = require('./Routes/filter')
 
 
 const app = express()
@@ -26,6 +26,8 @@ app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/order', orderRouter)
+app.use('/api/filter', filterRouter);
+
 
 //deploy
 if(process.env.NODE_ENV === "production") {
